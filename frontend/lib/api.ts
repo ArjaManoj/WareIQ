@@ -1,4 +1,16 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const getApiBaseUrl = (): string => {
+  // If running on client side (browser), use relative '/api' on same domain or NEXT_PUBLIC_API_URL
+  if (typeof window !== 'undefined') {
+    return process.env.NEXT_PUBLIC_API_URL || '/api';
+  }
+  // If running in server-side functions with Vercel Service binding
+  if (process.env.BACKEND_SERVICE_URL) {
+    const base = process.env.BACKEND_SERVICE_URL.replace(/\/+$/, '');
+    return `${base}/api`;
+  }
+  // Local fallback
+  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+};
 
 export interface ApiResponse<T = any> {
   success: boolean;
@@ -29,7 +41,9 @@ export async function apiClient<T = any>(
     headers['Authorization'] = `Bearer ${token}`;
   }
 
-  const url = `${API_BASE_URL}${endpoint.startsWith('/') ? endpoint : `/${endpoint}`}`;
+  const baseUrl = getApiBaseUrl();
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  const url = `${baseUrl}${cleanEndpoint}`;
 
   try {
     const res = await fetch(url, {
