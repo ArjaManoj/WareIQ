@@ -1,0 +1,86 @@
+import { NextResponse } from 'next/server';
+
+const FULFILLMENT_CENTERS = [
+  {
+    _id: 'fc_001',
+    name: 'WareIQ Delhi NCR Fulfillment Hub',
+    city: 'Gurugram',
+    state: 'Haryana',
+    zone: 'North',
+    address: 'Plot 42, Sector 37 Logistics Park, Pace City II',
+    pincode: '122001',
+    services: ['Same-Day Dispatch', 'D2C Fulfillment', 'Marketplace Staging', 'Cold Storage'],
+    operatingStatus: 'Active',
+    capacityPercentage: 78,
+  },
+  {
+    _id: 'fc_002',
+    name: 'WareIQ Mumbai Mega Gateway',
+    city: 'Bhiwandi',
+    state: 'Maharashtra',
+    zone: 'West',
+    address: 'Bldg B3, Indian Logistics City, Mankoli',
+    pincode: '421302',
+    services: ['Same-Day Dispatch', 'B2B Palletizing', 'Dark Store Staging', 'SOR Hub'],
+    operatingStatus: 'Active',
+    capacityPercentage: 84,
+  },
+  {
+    _id: 'fc_003',
+    name: 'WareIQ Bengaluru Tech Logistics Center',
+    city: 'Bengaluru',
+    state: 'Karnataka',
+    zone: 'South',
+    address: 'Indospace Industrial Park, Hosakote High-Tech Zone',
+    pincode: '562114',
+    services: ['Same-Day Delivery', 'Quick Commerce Dark Store Staging', 'Serial Tracking'],
+    operatingStatus: 'Active',
+    capacityPercentage: 69,
+  },
+  {
+    _id: 'fc_004',
+    name: 'WareIQ Hyderabad Regional FC',
+    city: 'Hyderabad',
+    state: 'Telangana',
+    zone: 'South',
+    address: 'Survey 108, Medchal Industrial Corridor',
+    pincode: '501401',
+    services: ['D2C Fulfillment', 'Pharma & Wellness Storage', 'Smart Routing'],
+    operatingStatus: 'Active',
+    capacityPercentage: 62,
+  },
+  {
+    _id: 'fc_005',
+    name: 'WareIQ Kolkata Gateway Hub',
+    city: 'Kolkata',
+    state: 'West Bengal',
+    zone: 'East',
+    address: 'NH-2 Industrial Cluster, Dankuni',
+    pincode: '712311',
+    services: ['East Hub Transshipment', 'Marketplace Inbounding', 'Multi-carrier Sorting'],
+    operatingStatus: 'Active',
+    capacityPercentage: 58,
+  },
+  {
+    _id: 'fc_006',
+    name: 'WareIQ Pune Fulfillment Center',
+    city: 'Pune',
+    state: 'Maharashtra',
+    zone: 'West',
+    address: 'MIDC Phase II, Chakan Logistics Park',
+    pincode: '410501',
+    services: ['Automated Sorting', 'Apparel QC Station', 'D2C Next-Day'],
+    operatingStatus: 'Active',
+    capacityPercentage: 72,
+  },
+];
+
+export async function GET() {
+  return NextResponse.json({
+    success: true,
+    data: FULFILLMENT_CENTERS,
+    meta: {
+      total: FULFILLMENT_CENTERS.length,
+    },
+  });
+}
