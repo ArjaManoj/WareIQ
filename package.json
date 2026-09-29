@@ -1,0 +1,29 @@
+{
+  "name": "wareiq-interactive-platform",
+  "version": "1.0.0",
+  "description": "WareIQ Interactive Fulfillment & Logistics Platform (MERN / Next.js)",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build:backend": "npm --prefix backend run build",
+    "build:frontend": "npm --prefix frontend run build",
+    "seed": "npm --prefix backend run seed",
+    "test": "npm --prefix backend test"
+  },
+  "keywords": [
+    "wareiq",
+    "logistics",
+    "fulfillment",
+    "3pl",
+    "mern",
+    "nextjs",
+    "ecommerce"
+  ],
+  "author": "Manoj Arja",
+  "license": "ISC"
+}
